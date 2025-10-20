@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 
 # Word frequency exercise
@@ -35,7 +34,7 @@ def word_frequency(text):
     # \b - word boundary
     # \w - any word character (letter, digit, underscore)
     # +  - one or more occurrences
-    words = re.findall(r'\b\w+\b', text)
+    words = re.findall(r"\b[a-z]+(?:'[a-z]+)?", text)
     
     # Create a dictionary to hold word frequencies
     frequency = {}
@@ -51,25 +50,20 @@ def word_frequency(text):
             
     return frequency
 
-def main():
-    """Main program loop."""
-    while True:
-        # Prompt user for input
-        user_input = input("Please enter a sentence: ")
-        
-        # Validate the input
-        if is_sentence(user_input):
-            # Calculate word frequency
-            frequencies = word_frequency(user_input)
-            
-            # Print the word frequencies
-            print("Word Frequencies:")
-            for word, count in frequencies.items():
-                print(f"{word}: {count}")
-            break
-        else:
-            print("Invalid input. Please enter a valid sentence.")
+def print_word_frequencies(frequencies):
+    """Print the word frequencies in a formatted way."""
+    for word, count in frequencies.items():
+        print(f"{word}: {count}")
 
 
 if __name__ == "__main__":
-    main()
+    # Prompt the user for a sentence
+    user_input = input("Please enter a sentence: ")
+    # Validate the input and calculate word frequencies
+    if is_sentence(user_input):
+        # Calculate word frequencies and print them
+        frequencies = word_frequency(user_input)
+        print_word_frequencies(frequencies)
+    # If the input is not a valid sentence, print an error message
+    else:
+        print("The provided text is not a valid sentence.")
