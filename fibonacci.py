@@ -41,19 +41,21 @@ def fibonacci(term):
         fib_sequence.append(fib_sequence[-1] + fib_sequence[-2])
     return fib_sequence
 
-def main():
-    """Main program loop."""
-    while True:
-        # Ask user for input
-        user_input = input("How many terms of the Fibonacci sequence do you want? ")
-        # Check if input is valid
-        n = validate_input(user_input)
-        # If valid, generate and print the Fibonacci sequence
-        if n is not None:
-            sequence = fibonacci(n)
-            print(f"Fibonacci sequence ({n} terms):", *sequence)
-            break
+
+def print_fibonacci(sequence):
+    """Print the Fibonacci sequence."""
+    for num in sequence:
+        print(num, end=' ')
 
 if __name__ == "__main__":
-    main()
-
+    # Loop until valid input is received
+    while True:
+        # Prompt the user for the number of terms
+        user_input = input("Enter the number of terms for the Fibonacci sequence: ")
+        n = validate_input(user_input)
+        
+        # If input is valid, generate and print the Fibonacci sequence and break the loop
+        if n is not None:
+            sequence = fibonacci(n)
+            print_fibonacci(sequence)
+            break
