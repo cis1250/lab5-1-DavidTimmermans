@@ -67,3 +67,5 @@ if __name__ == "__main__":
     # If the input is not a valid sentence, print an error message
     else:
         print("The provided text is not a valid sentence.")
+#Grading Comments:
+#Good job, you just had to make a function to validate user input instead of doing it in main.
